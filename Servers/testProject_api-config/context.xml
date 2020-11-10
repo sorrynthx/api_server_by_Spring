@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context crossContext="true">
+  <WatchedResource>WEB-INF/web.xml</WatchedResource>
+  <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+  <ResourceLink name="location" global="vsc/location" type="java.lang.String" />
+  <ResourceLink name="db" global="vsc/database" type="javax.sql.DataSource"/>
+
+</Context>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	
+	<property name="VSC_LOG" value="D:/logs/backupProjectlogs" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} %-5level [%logger-%method:%L] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE-AUDIT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${VSC_LOG}/backupProject.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} %-5level [%logger-%method:%L] %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${VSC_LOG}/backupProject.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+
+	</appender>
+	
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE-AUDIT" />
+	</root>
+	
+<!-- 	<root level="debug"> -->
+<!-- 		<appender-ref ref="CONSOLE" /> -->
+<!--    	</root> -->
+   
+<!-- 	<logger name="jdbc.sqlonly" level="DEBUG"/> -->
+
+</configuration>

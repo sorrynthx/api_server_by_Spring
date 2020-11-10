@@ -1,0 +1,15 @@
+
+id = in config_id
+password = in config_password
+user_name = in config_user_name
+
+test_id = in config_test_id
+
+
+# DB Info
+url = jdbc:mysql://192.168.0.12:3306/vsc_database?useUnicode=yes&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;autoReconnectForPools=true
+id = book
+pw = book!@
+
+# API URL
+api.url = http://192.168.0.140:8091/

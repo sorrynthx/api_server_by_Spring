@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8010" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+  <GlobalNamingResources>
+	
+	<!-- conf -->
+    <Environment name="vsc/location" type="java.lang.String" value="D:/testConfi.conf"/>
+    
+	<!-- DB : Oracle / MySQL / MS-SQL --> <!-- REAL URL : url="jdbc:mysql://14.63.218.59:3306/kiosk?useUnicode=yes&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;autoReconnectForPools=true" -->
+	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" initialSize="2" jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer" jmxEnabled="true" logAbandoned="true" maxActive="20" maxIdle="5" maxWait="10000" minEvictableIdleTimeMillis="30000" minIdle="2" name="vsc/database" password="eco_kolas3#" removeAbandoned="true" removeAbandonedTimeout="60" testOnBorrow="true" testOnReturn="false" testWhileIdle="true" timeBetweenEvictionRunsMillis="30000" type="javax.sql.DataSource" url="jdbc:oracle:thin:@vsc.iptime.org:1521:k3" username="kolas" validationInterval="30000" validationQuery="SELECT 1 FROM DUAL"/>
+	<!-- <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="vsc/database" password="inout!@#" type="javax.sql.DataSource" url="jdbc:mysql://14.63.217.168:3306/vsc_inout?useUnicode=yes&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;autoReconnectForPools=true" username="inout"/> -->
+	<!-- <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" maxActive="100" maxIdle="30" maxWait="10000" name="vsc/database" type="javax.sql.DataSource" password="inout!@#" url="jdbc:sqlserver://192.168.0.140:1433;databaseName=inout" username="inout" validationQuery="SELECT 1"/> -->
+	
+  </GlobalNamingResources>
+
+  <Service name="testProject">
+    <Connector maxKeepAliveRequests="1" port="8090"/>
+    <Engine defaultHost="localhost" name="Catalina">
+	  <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
+	    
+	    <!-- Image Upload Path -->
+	    <!-- <Context docBase="D:/dev/upload" path="/INOUT/upload" reloadable="true"/> -->
+	    <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="testProject_localhost_access_log" suffix=".txt"/>
+		
+	  <Context docBase="testProject" path="/" reloadable="true" source="org.eclipse.jst.jee.server:testProject"/></Host>
+    </Engine>
+  </Service>
+</Server>
