@@ -22,13 +22,10 @@ import javax.servlet.annotation.WebListener;
 public class AppListener implements ServletContextListener {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	
-	
-	
+		
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		
+		/*	
 		logger.info("AppListener Start...");
 		
 		// 3초마다 실행
@@ -45,6 +42,7 @@ public class AppListener implements ServletContextListener {
 		Thread thread2 = new Thread(new AppThread2("test_thread2"));
 		thread2.setDaemon(true);
 		thread2.start();
+		*/
 	}
 	
 	@Override

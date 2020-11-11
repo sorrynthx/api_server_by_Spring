@@ -18,18 +18,15 @@ import javax.servlet.annotation.WebListener;
  *  
  * */
 
-/*@WebListener
+@WebListener
 public class AppListener implements ServletContextListener {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	
-	
-	
+		
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		
-		logger.info("AppListener Start...");
+		logger.info("AppListener Start API Server...");
 		
 		// 3초마다 실행
 		Timer jobScheduler = new Timer(true);
@@ -39,12 +36,19 @@ public class AppListener implements ServletContextListener {
 		// 스레드 1
 		Thread thread1 = new Thread(new AppThread1("test_thread1"));
 		thread1.setDaemon(true);
-		thread1.start();
 
 		// 스레드 2		
 		Thread thread2 = new Thread(new AppThread2("test_thread2"));
 		thread2.setDaemon(true);
-		thread2.start();
+		
+		try {
+			// 10초뒤 출발
+			Thread.sleep(10000);
+			thread1.start();
+			thread2.start();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -52,4 +56,4 @@ public class AppListener implements ServletContextListener {
 		logger.info("end before destroy...");
 	}
 	
-}*/
+}
